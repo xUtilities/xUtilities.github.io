@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,30 +50,6 @@
       border-radius: 30px;
     }
 
-    /* Button on the right side */
-    .topbar .btn {
-      font-size: 30px;
-      border: 0.01px solid rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(25px);
-      -webkit-backdrop-filter: blur(25px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-      background-color: rgba(85, 85, 85, 0.8);
-      color: white;
-      width: 40px; /* Set the width to be the same as the height */
-      height: 40px; /* Same height as the input field */
-      margin-left: auto; /* Pushes the button to the right */
-      border-radius: 50%; /* Makes the button circular */
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .topbar .btn:hover {
-      background-color: rgba(85, 85, 85, 1);
-    }
-
     /* Sidebar Styles */
     .sidebar {
       background-color: rgba(28, 28, 28, 0.8);
@@ -95,43 +70,40 @@
     }
 
     /* Sidebar Logo and Title */
-.sidebar .logo-title {
-  display: flex;
-  align-items: center;
-  margin-bottom: 30px;
-  padding-left: 35px; /* Reduced padding for closer alignment */
-}
+    .sidebar .logo-title {
+      display: flex;
+      align-items: center;
+      margin-bottom: 30px;
+      padding-left: 35px; /* Reduced padding for closer alignment */
+    }
 
-.sidebar .logo-title img {
-  width: 32px;
-  height: 30px;
-  margin: 5px; /* Maintain spacing around the logo */
-  border-radius: 8px; /* Optional for rounded corners */
-}
+    .sidebar .logo-title img {
+      width: 32px;
+      height: 30px;
+      margin: 5px; /* Maintain spacing around the logo */
+      border-radius: 8px; /* Optional for rounded corners */
+    }
 
-.sidebar h1 {
-  color: white;
-  font-size: 24px;
-  text-align: left; /* Keep the text aligned to the left */
-  margin: 0; /* Remove extra margins */
-}
-
-
+    .sidebar h1 {
+      color: white;
+      font-size: 24px;
+      text-align: left; /* Keep the text aligned to the left */
+      margin: 0; /* Remove extra margins */
+    }
 
     /* Sidebar Link Styles */
     .sidebar a {
-  color: white;
-  text-decoration: none;
-  padding: 15px;
-  padding-left: 45px; /* Add extra 10px to move links to the right */
-  font-size: 18px;
-  display: inline-block;
-  position: relative;
-  font-weight: 500;
-  margin-bottom: 10px;
-  transition: color 0.3s ease;
-}
-
+      color: white;
+      text-decoration: none;
+      padding: 15px;
+      padding-left: 45px; /* Add extra 10px to move links to the right */
+      font-size: 18px;
+      display: inline-block;
+      position: relative;
+      font-weight: 500;
+      margin-bottom: 10px;
+      transition: color 0.3s ease;
+    }
 
     .sidebar a::before {
       content: "";
@@ -187,8 +159,6 @@
   <!-- Topbar -->
   <div class="topbar">
     <input type="text" placeholder="Search xUtilities...">
-    <!-- Circular button on the right side of the topbar -->
-    <button class="btn">⚙︎</button>
   </div>
 
   <!-- Sidebar -->
