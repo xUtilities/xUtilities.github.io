@@ -11,6 +11,7 @@
       margin: 0;
       padding: 0;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       height: 100vh;
@@ -71,6 +72,15 @@
       color: #cccccc;
       margin-top: 10px;
     }
+    .footer-text {
+      position: absolute;
+      bottom: 10px;
+      width: 100%;
+      text-align: center;
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.5);
+      text-transform: uppercase;
+    }
   </style>
 </head>
 <body>
@@ -79,33 +89,46 @@
     <button onclick="window.location.href='https://xutilities.github.io';">Go Home</button>
     <div class="center-content">
       <h1>Error 404 | Not Found</h1>
-      <div class="sub-text" id="random-phrase">Placeholder</div>
+      <div class="sub-text" id="random-phrase">Where Are You Bro?</div>
     </div>
   </div>
-
+  <div class="footer-text">
+    These messages are jokes. don't take them seriously
+  </div>
   <script>
     // Array of new phrases
     const phrases = [
-      "Move on, Seriously.🙏",
-      "Page found❌ Waldo found✅",
-      "Awkward😬",
-      "Leaves you on seen*",
-      "Sorry?",
-      "Where are the fries🙏😭",
+      "Move on bro",
+      "I can explain",
+      "But we found Waldo",
+      "Awkward",
+      "You had ONE job",
+      "Tragic",
+      "Imagine…",
+      "Nice try",
+      "Skill issue",
+      "Nice! You found NOTHING",
       "Bruh",
+      "It's not you, it's us? Nah… it's you",
+      "Damn",
       "Not my problem",
-      "Aight",
-      "I swear it was here😭",
+      "I know that feeling",
+      "I swear it was here",
+      "Do better",
       "Try turning it off and on",
-      "Shes busy lil bro",
-      "Reward if found",
-      "Mission failed",
-      "I have bad news",
-      "Reasonable crash out",
-      "my bad bro",
-      "js leave me alone bruh",
-      "ts (this) ran away",
-      "what"
+      "You're lost bro",
+      "Go on about your day",
+      "Touch grass while you wait",
+      "You make me feel smart",
+      "How did you mess this up?",
+      "Embarrassing",
+      "Huh?",
+      "She's busy lil bro",
+      "Not here man",
+      "Page left cuz of you",
+      "Even Google is laughing at you",
+      "Page couldn't deal w you",
+      "Even the 502 page is judging you"
     ];
 
     // Function to change the phrase randomly
@@ -120,4 +143,3 @@
   </script>
 </body>
 </html>
-
