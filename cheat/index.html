@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cheat | xUtilities</title>
+    <link rel="icon" href="/assets/favicon.ico" type="image/x-icon">
+    <style>
+        /* Full page background with parallax effect */
+        body {
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Arial, sans-serif;
+            flex-direction: column;
+            min-height: 100vh;
+            background-image: url('https://wallpapershome.com/images/pages/pic_h/25957.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            color: white;
+        }
+
+        /* Title container */
+        .title-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 200px 0;
+        }
+
+        /* Title styling */
+        .title {
+            font-size: 150px;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            color: #ffffff;
+            margin-left: 20px;
+            text-align: center;
+        }
+
+        /* Outer rounded square with glassmorphic effect */
+        .outer-square {
+            width: 900px;
+            background-color: rgba(28, 28, 28, 0.5); 
+            border-radius: 45px;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 20px;
+            margin-bottom: 50px;
+            border: 0.01px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+        }
+        
+        /* Subtitle styling */
+        .subtitle {
+            font-size: 72px;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            color: #ffffff;
+            margin: 100px;
+            text-align: center;
+        }
+
+        /* Grid container inside the outer square */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Inner rounded squares with custom background images */
+        .inner-square {
+            border-radius: 30px;
+            height: 300px;
+            width: 100%;
+            background-size: 100%;
+            background-position: center;
+            border: 0.01px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3), 0 1px 3px rgba(0, 0, 0, 0.1);
+            transition: background-size 0.3s ease-in-out;
+            background-size: 140%;
+        }
+
+        /* Zoom-in effect on the background image */
+        .inner-square:hover {
+            background-size: 155%;
+        }
+
+        /* Title text below each tile */
+        .tile-title {
+            font-size: 24px;
+            font-family: Arial, sans-serif;
+            color: #ffffff;
+            margin-top: 10px;
+            text-decoration: none;
+        }
+
+        .overlay-text {
+            position: fixed; /* Stays fixed on the screen */
+            bottom: 20px; /* Distance from the bottom */
+            left: 50%; /* Align horizontally to the center */
+            transform: translateX(-50%); /* Perfectly center the element */
+            background-color: rgba(0, 0, 0, 0.7); /* Optional: Semi-transparent black background */
+            color: #ffffff; /* White text */
+            padding: 10px 20px; /* Padding for the text box */
+            font-size: 18px; /* Adjust font size */
+            border-radius: 8px; /* Optional: Rounded corners */
+            z-index: 9999; /* Ensure it overlays everything */
+            text-align: center; /* Center text horizontally */
+            pointer-events: none; /* Makes sure it doesn’t block clicks behind it */
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar included in all pages -->
+    <div id="navbar-placeholder"></div>
+
+    <!-- Page content -->
+    <div class="title-container">
+        <div class="title-image"></div>
+        <div class="title">Cheat</div>
+    </div>
+
+    <!-- Section 1 -->
+    <div class="outer-square">
+        <div class="grid-container">
+            <div>
+                <a href="calculator">
+                    <div class="inner-square" style="background-image: url('https://convertingcolors.com/background-252525.svg');"></div>
+                </a>
+                <div class="tile-title">Calculator</div>
+            </div>
+            <div>
+                <a href="slope">
+                    <div class="inner-square" style="background-image: url('https://convertingcolors.com/background-252525.svg');"></div>
+                </a>
+                <div class="tile-title">Tile 2</div>
+            </div>
+            <div>
+                <a href="#">
+                    <div class="inner-square" style="background-image: url('https://convertingcolors.com/background-252525.svg');"></div>
+                </a>
+                <div class="tile-title">Tile 3</div>
+            </div>
+            <div>
+                <a href="#">
+                    <div class="inner-square" style="background-image: url('https://convertingcolors.com/background-252525.svg');"></div>
+                </a>
+                <div class="tile-title">Tile 4</div>
+            </div>
+            <div>
+                <a href="#">
+                    <div class="inner-square" style="background-image: url('https://convertingcolors.com/background-252525.svg');"></div>
+                </a>
+                <div class="tile-title">Tile 5</div>
+            </div>
+            <div>
+                <a href="#">
+                    <div class="inner-square" style="background-image: url('https://convertingcolors.com/background-252525.svg');"></div>
+                </a>
+                <div class="tile-title">Tile 6</div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer placeholder -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Navbar and Footer loading scripts -->
+    <script>
+        // Fetch the navbar.html file and insert it into the page
+        fetch('navbar.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbar-placeholder').innerHTML = data;
+            });
+
+        // Fetch the footer.html file and insert it into the page
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            });
+    </script>
+</body>
+</html>
