@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>xUtilitiesCalculator</title>
+    <title>Calculator | xUtilities</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -14,28 +14,21 @@
             margin: 0;
         }
 
-        .container {
-            display: flex;
-            align-items: flex-start;
-        }
-
         .calculator {
-            background-color: rgba(28, 28, 28, 0.5); /* Reduced opacity for more translucency */
-            padding: 20px;
+            background-color: rgba(28, 28, 28, 0.5);
+            padding: 15px;
             border-radius: 50px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             max-width: 375px;
             width: 100%;
-            margin-right: 20px;
-            border: 0.01px solid rgba(255, 255, 255, 0.1); /* Semi-transparent white outline */
-    backdrop-filter: blur(10px); /* Adding blur effect to background */
-    -webkit-backdrop-filter: blur(10px); /* Safari support */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25); /* Optional: adding subtle shadow to enhance the glass effect */
+            border: 0.01px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
         }
 
         #display {
-            width: 100%;
-            height: 100px;
+            height: 75px;
             font-size: 2em;
             text-align: right;
             margin-bottom: 10px;
@@ -44,10 +37,10 @@
             border-radius: 35px;
             background-color: #262626;
             color: white;
-            border: 0.01px solid rgba(255, 255, 255, 0.1); /* Semi-transparent white outline */
-    backdrop-filter: blur(10px); /* Adding blur effect to background */
-    -webkit-backdrop-filter: blur(10px); /* Safari support */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25); /* Optional: adding subtle shadow to enhance the glass effect */
+            border: 0.01px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
         }
 
         .buttons {
@@ -63,10 +56,10 @@
             border: 0;
             cursor: pointer;
             transition: background-color 0.3s ease;
-            border: 0.01px solid rgba(255, 255, 255, 0.1); /* Semi-transparent white outline */
-    backdrop-filter: blur(10px); /* Adding blur effect to background */
-    -webkit-backdrop-filter: blur(10px); /* Safari support */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25); /* Optional: adding subtle shadow to enhance the glass effect */
+            border: 0.01px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
         }
 
         .buttons button.operator {
@@ -117,212 +110,133 @@
         .buttons button.zero {
             grid-column: span 2;
         }
-
-        #history {
-            background-color: rgba(28, 28, 28, 0.5); /* Reduced opacity for more translucency */
-            color: white;
-            padding: 20px;
-            border-radius: 50px;
-            width: 375px;
-            height: 740px; /* Fixed height */
-            overflow-y: auto; /* Enable scrolling if content exceeds the height */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-            border: 0.01px solid rgba(255, 255, 255, 0.1); /* Semi-transparent white outline */
-    backdrop-filter: blur(10px); /* Adding blur effect to background */
-    -webkit-backdrop-filter: blur(10px); /* Safari support */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25); /* Optional: adding subtle shadow to enhance the glass effect */
-        }
-
-        /* Hide scrollbar */
-        #history::-webkit-scrollbar {
-            width: 0px;
-            background: transparent;
-        }
-
-        #history {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-
-        .history-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-
-        #history-title {
-            font-weight: bold;
-            font-size: 1.8em;
-        }
-
-        #history-entries {
-            display: flex;
-            flex-direction: column;
-            gap: 10px; /* Space between history items */
-        }
-
-        .history-display {
-             padding: 20px;
-            font-size: 1.5em;
-            border-radius: 50px;
-            border: 0.01px solid rgba(255, 255, 255, 0.1); /* Semi-transparent white outline */
-    backdrop-filter: blur(10px); /* Adding blur effect to background */
-    -webkit-backdrop-filter: blur(10px); /* Safari support */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25); /* Optional: adding subtle shadow to enhance the glass effect */
-        }
-
-        /* Ensure consistent spacing for expressions and results */
-        .history-display span:first-child {
-            flex-grow: 1;
-            text-align: left;
-            padding-left: 15px;  /* Uniform padding from left */
-        }
-
-        .history-display span:last-child {
-            text-align: right;
-            padding-right: 15px;  /* Uniform padding from right */
-        }
-
-        #clear-history {
-            background-color: rgba(255, 255, 255, 0.4);
-            color: black;
-            padding: 10px 20px;
-            font-size: 1em;
-            border-radius: 50px;
-            border: 0;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        #clear-history:hover {
-            background-color: rgba(101, 101, 101, 1);
-        }
-
-  
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <div class="calculator">
-            <input type="text" id="display" disabled>
-            <div class="buttons">
-                <button onclick="clearDisplay()" class="clear">C</button>
-                <button onclick="deleteLast()" class="delete">DEL</button>
-                <button onclick="appendToDisplay('%')" class="percent">%</button>
-                <button onclick="appendToDisplay('/')" class="operator">÷</button>
+    <div class="calculator">
+        <input type="text" id="display" disabled>
+        <div class="buttons">
+            <button onclick="clearDisplay()" class="clear">C</button>
+            <button onclick="deleteLast()" class="delete">DEL</button>
+            <button onclick="appendToDisplay('%')" class="percent">%</button>
+            <button onclick="appendToDisplay('/')" class="operator">÷</button>
 
-                <button onclick="appendToDisplay('7')" class="number">7</button>
-                <button onclick="appendToDisplay('8')" class="number">8</button>
-                <button onclick="appendToDisplay('9')" class="number">9</button>
-                <button onclick="appendToDisplay('*')" class="operator">×</button>
+            <button onclick="appendToDisplay('7')" class="number">7</button>
+            <button onclick="appendToDisplay('8')" class="number">8</button>
+            <button onclick="appendToDisplay('9')" class="number">9</button>
+            <button onclick="appendToDisplay('*')" class="operator">×</button>
 
-                <button onclick="appendToDisplay('4')" class="number">4</button>
-                <button onclick="appendToDisplay('5')" class="number">5</button>
-                <button onclick="appendToDisplay('6')" class="number">6</button>
-                <button onclick="appendToDisplay('-')" class="operator">-</button>
+            <button onclick="appendToDisplay('4')" class="number">4</button>
+            <button onclick="appendToDisplay('5')" class="number">5</button>
+            <button onclick="appendToDisplay('6')" class="number">6</button>
+            <button onclick="appendToDisplay('-')" class="operator">-</button>
 
-                <button onclick="appendToDisplay('1')" class="number">1</button>
-                <button onclick="appendToDisplay('2')" class="number">2</button>
-                <button onclick="appendToDisplay('3')" class="number">3</button>
-                <button onclick="appendToDisplay('+')" class="operator">+</button>
+            <button onclick="appendToDisplay('1')" class="number">1</button>
+            <button onclick="appendToDisplay('2')" class="number">2</button>
+            <button onclick="appendToDisplay('3')" class="number">3</button>
+            <button onclick="appendToDisplay('+')" class="operator">+</button>
 
-                <button onclick="appendToDisplay('0')" class="number zero">0</button>
-                <button onclick="appendToDisplay('.')" class="number">.</button>
-                <button onclick="calculate()" class="operator">=</button>
+            <button onclick="appendToDisplay('0')" class="number zero">0</button>
+            <button onclick="appendToDisplay('.')" class="number">.</button>
+            <button onclick="calculate()" class="operator">=</button>
 
-                <button onclick="appendToDisplay('sin(')" class="scientific">sin</button>
-                <button onclick="appendToDisplay('cos(')" class="scientific">cos</button>
-                <button onclick="appendToDisplay('tan(')" class="scientific">tan</button>
-                <button onclick="appendToDisplay('log(')" class="scientific">log</button>
+            <button onclick="appendToDisplay('sin(')" class="scientific">sin</button>
+            <button onclick="appendToDisplay('cos(')" class="scientific">cos</button>
+            <button onclick="appendToDisplay('tan(')" class="scientific">tan</button>
+            <button onclick="appendToDisplay('log(')" class="scientific">log</button>
 
-                <button onclick="appendToDisplay('sqrt(')" class="scientific">√</button>
-                <button onclick="appendToDisplay('pow(')" class="scientific">x²</button>
-                <button onclick="appendToDisplay('PI')" class="scientific">π</button>
-                <button onclick="appendToDisplay('E')" class="scientific">e</button>
-                <button onclick="appendToDisplay('(')" class="scientific">(</button>
-                <button onclick="appendToDisplay(')')" class="scientific">)</button>
-                <button onclick="" class="scientific zero" style="background-color: #1c1c1c; color: #6e6e6e;">xUtilities</button>
-            </div>
-        </div>
-
-        <div>
-            <!-- History Section -->
-            <div id="history">
-                <div class="history-header">
-                    <div id="history-title">History</div>
-                    <button id="clear-history" onclick="clearHistory()">Clear History</button>
-                </div>
-                <div id="history-entries"></div> <!-- No placeholder entries -->
-            </div>
-                </div>
-            </div>
+            <button onclick="appendToDisplay('sqrt(')" class="scientific">√</button>
+            <button onclick="appendToDisplay('pow(')" class="scientific">x²</button>
+            <button onclick="appendToDisplay('PI')" class="scientific">π</button>
+            <button onclick="appendToDisplay('E')" class="scientific">e</button>
+            <button onclick="appendToDisplay('(')" class="scientific">(</button>
+            <button onclick="appendToDisplay(')')" class="scientific">)</button>
+            <button onclick="" class="scientific zero" style="background-color: #1c1c1c; color: #6e6e6e;">xUtilities</button>
         </div>
     </div>
 
     <script>
         const display = document.getElementById("display");
+        let isError = false; // Flag to track if the display is showing an error
 
         function appendToDisplay(value) {
+            if (isError) {
+                // If the display is showing an error, clear it before appending
+                display.value = '';
+                isError = false;
+            }
             display.value += value;
         }
 
         function clearDisplay() {
             display.value = '';
+            isError = false;
         }
 
         function deleteLast() {
-            display.value = display.value.slice(0, -1);
+            if (isError) {
+                // If the display is showing an error, clear it
+                display.value = '';
+                isError = false;
+            } else {
+                display.value = display.value.slice(0, -1);
+            }
         }
 
         function calculate() {
             try {
-                let originalExpression = display.value; // Store the original expression
                 let expression = display.value;
 
                 // Replace percentage expressions
-                expression = expression.replace(/(\d+)%/g, '($1/100)');
+                expression = expression.replace(/(\d+(\.\d+)?)%/g, '($1/100)');
 
-                // Replace π and e with their numerical values
-                expression = expression.replace(/PI/g, Math.PI);
-                expression = expression.replace(/E/g, Math.E);
+                // Replace constants with their numerical values
+                expression = expression.replace(/PI/g, 'PI');
+                expression = expression.replace(/E/g, 'E');
 
                 // Replace functions with their JavaScript equivalents
-                expression = expression.replace(/sin\(/g, 'Math.sin(Math.PI/180*');
-                expression = expression.replace(/cos\(/g, 'Math.cos(Math.PI/180*');
-                expression = expression.replace(/tan\(/g, 'Math.tan(Math.PI/180*');
-                expression = expression.replace(/log\(/g, 'Math.log(');
-                expression = expression.replace(/sqrt\(/g, 'Math.sqrt(');
-                expression = expression.replace(/pow\(/g, 'Math.pow(');
+                // No longer prefixing with Math., instead using defined functions
+                expression = expression.replace(/sin\(/g, 'sin(');
+                expression = expression.replace(/cos\(/g, 'cos(');
+                expression = expression.replace(/tan\(/g, 'tan(');
+                expression = expression.replace(/log\(/g, 'log(');
+                expression = expression.replace(/sqrt\(/g, 'sqrt(');
+                expression = expression.replace(/pow\(/g, 'pow(');
 
-                // Validate the expression to allow only numbers and mathematical operators
-                if (/^[0-9+\-*/%^().\sMath.PIEMathsincoatanqlgqrtpow]*$/.test(expression)) {
-                    let result = Function('"use strict";return (' + expression + ')')();
-                    display.value = result;
-
-                    // Add to history using the original expression
-                    addToHistory(`${originalExpression} = ${result}`);
-                } else {
-                    display.value = "Error: Invalid Input";
+                // Validate the expression to allow only specific characters and functions
+                const allowedCharacters = /^[0-9+\-*/().%\sPIEabcdefghijklmnopqrstuvwxyz]*$/;
+                if (!allowedCharacters.test(expression)) {
+                    throw new Error("Invalid characters in expression");
                 }
+
+                // Evaluate the expression safely
+                const result = safeEval(expression);
+                display.value = result;
             } catch (e) {
-                display.value = "Error: Invalid Input";
+                display.value = "Error";
+                isError = true; // Set the error flag
             }
         }
 
-        function addToHistory(entry) {
-            const historyEntriesDiv = document.getElementById('history-entries');
-            const newEntry = document.createElement('div');
-            newEntry.className = 'history-display';
-            newEntry.innerHTML = `<span>${entry.split('=')[0]}</span><span>= ${entry.split('=')[1]}</span>`;
-            historyEntriesDiv.insertBefore(newEntry, historyEntriesDiv.firstChild);
-        }
+        // Safe evaluation function
+        function safeEval(expr) {
+            // Only allow certain Math functions and constants
+            const allowedFunctions = {
+                sin: function(x) { return Math.sin(x * Math.PI / 180); }, // Degrees to radians
+                cos: function(x) { return Math.cos(x * Math.PI / 180); },
+                tan: function(x) { return Math.tan(x * Math.PI / 180); },
+                log: function(x) { return Math.log10 ? Math.log10(x) : Math.log(x) / Math.LN10; },
+                sqrt: Math.sqrt,
+                pow: Math.pow,
+                PI: Math.PI,
+                E: Math.E
+            };
 
-        function clearHistory() {
-            const historyEntriesDiv = document.getElementById('history-entries');
-            historyEntriesDiv.innerHTML = '';
+            // Create a new function with restricted scope
+            // Pass allowed functions and constants as parameters
+            // Replace constants in the expression with their variable names
+            return Function(...Object.keys(allowedFunctions), '"use strict"; return (' + expr + ')')(...Object.values(allowedFunctions));
         }
     </script>
 
