@@ -113,7 +113,7 @@
     </style>
 </head>
 <body>
-
+    <div id="navbar-placeholder"></div>
     <div class="calculator">
         <input type="text" id="display" disabled>
         <div class="buttons">
@@ -155,7 +155,7 @@
             <button onclick="" class="scientific zero" style="background-color: #1c1c1c; color: #6e6e6e;">xUtilities</button>
         </div>
     </div>
-
+    <div id="footer-placeholder"></div>
     <script>
         const display = document.getElementById("display");
         let isError = false; // Flag to track if the display is showing an error
@@ -239,6 +239,20 @@
             return Function(...Object.keys(allowedFunctions), '"use strict"; return (' + expr + ')')(...Object.values(allowedFunctions));
         }
     </script>
+    <script>
+        // Fetch the navbar.html file and insert it into the page
+        fetch('navbar.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbar-placeholder').innerHTML = data;
+            });
 
+        // Fetch the footer.html file and insert it into the page
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            });
+    </script>
 </body>
 </html>
