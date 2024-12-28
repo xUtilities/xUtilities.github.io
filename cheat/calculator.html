@@ -1,57 +1,76 @@
-<html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <title>Calculator | xUtilities</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
+        /* Apply box-sizing globally */
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
         body {
             font-family: Arial, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-image: url('https://www.colorhexa.com/000000.png');
-            margin: 100;
+            background-color: #000000;
+            margin: 0;
         }
 
         .calculator {
-          margin-top: 160px;
             background-color: rgba(28, 28, 28, 0.5);
             padding: 15px;
-            border-radius: 50px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            max-width: 375px;
-            width: 100%;
+            border-radius: 45px;
             border: 0.01px solid rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+            /* Fixed width to ensure consistency */
+            width: 375px;
+            /* Allow height to adjust based on content */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* Prevent the calculator from shrinking */
+            flex-shrink: 0;
         }
 
         #display {
-            height: 75px;
+            /* Fixed dimensions */
+            width: 100%;
+            height: 85px; /* Increased from 75px to 85px */
             font-size: 2em;
             text-align: right;
             margin-bottom: 10px;
             padding: 20px;
             border: 0;
-            border-radius: 35px;
+            border-radius: 32.5px; /* Maintained at 35px */
             background-color: #262626;
             color: white;
             border: 0.01px solid rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+            overflow: hidden; /* Prevent content overflow */
+            white-space: nowrap; /* Prevent text wrapping */
+            text-overflow: ellipsis; /* Show ellipsis for overflowed text */
         }
 
         .buttons {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 10px;
+            width: 100%; /* Match the calculator's width */
         }
 
         .buttons button {
-            padding: 20px;
+            /* Consistent sizing with adjusted height */
+            height: 65px; /* Slightly shorter than previous 70px */
             font-size: 1.5em;
-            border-radius: 50px;
+            border-radius: 35px; /* Changed from 50px to 35px to match display */
             border: 0;
             cursor: pointer;
             transition: background-color 0.3s ease;
@@ -59,6 +78,11 @@
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0; /* Remove padding to maintain height */
+            overflow: hidden; /* Prevent content overflow */
         }
 
         .buttons button.operator {
@@ -108,285 +132,64 @@
 
         .buttons button.zero {
             grid-column: span 2;
+            height: 65px; /* Maintain consistent height */
+            /* Optional: Adjust width if necessary */
+            /* width: 170px; */
+        }
+
+        /* Ensure the xUtilities button fits properly */
+        .buttons button.scientific.zero {
+            height: 65px; /* Match other buttons */
+            font-size: 1em; /* Adjust font size if necessary */
         }
     </style>
 </head>
 <body>
-    <div id="navbar-placeholder">
 
+    <div id="navbar-placeholder"></div>
 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>get outta here</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-    }
+    <main role="main" class="calculator" aria-label="Calculator">
+        <input type="text" id="display" disabled aria-label="Calculator display">
+        <div class="buttons" role="group" aria-label="Calculator buttons">
+            <button type="button" onclick="clearDisplay()" class="clear" aria-label="Clear">C</button>
+            <button type="button" onclick="deleteLast()" class="delete" aria-label="Delete last entry">DEL</button>
+            <button type="button" onclick="appendToDisplay('%')" class="percent" aria-label="Percentage">%</button>
+            <button type="button" onclick="appendToDisplay('/')" class="operator" aria-label="Divide">÷</button>
 
-    body {
-      font-family: Arial, sans-serif;
-      display: flex;
-      min-height: 100vh;
-      background-color: #f4f4f4;
-      flex-direction: column;
-    }
+            <button type="button" onclick="appendToDisplay('7')" class="number" aria-label="Seven">7</button>
+            <button type="button" onclick="appendToDisplay('8')" class="number" aria-label="Eight">8</button>
+            <button type="button" onclick="appendToDisplay('9')" class="number" aria-label="Nine">9</button>
+            <button type="button" onclick="appendToDisplay('*')" class="operator" aria-label="Multiply">×</button>
 
-    /* Topbar Styles */
-    .topbar {
-      background-color: rgba(28, 28, 28, 0.9);
-      border: 0.01px solid rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(25px);
-      -webkit-backdrop-filter: blur(25px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-      width: calc(100% - 225px);
-      padding: 20px 20px;
-      color: white;
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      position: fixed;
-      top: 0;
-      left: 225px;
-      z-index: 1000;
-    }
+            <button type="button" onclick="appendToDisplay('4')" class="number" aria-label="Four">4</button>
+            <button type="button" onclick="appendToDisplay('5')" class="number" aria-label="Five">5</button>
+            <button type="button" onclick="appendToDisplay('6')" class="number" aria-label="Six">6</button>
+            <button type="button" onclick="appendToDisplay('-')" class="operator" aria-label="Subtract">-</button>
 
-    .topbar input[type="text"] {
-      border: 0.01px solid rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(25px);
-      -webkit-backdrop-filter: blur(25px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-      padding: 10px;
-      width: 300px;
-      height: 40px; /* Ensures the height of the input */
-      border: none;
-      border-radius: 30px;
-    }
+            <button type="button" onclick="appendToDisplay('1')" class="number" aria-label="One">1</button>
+            <button type="button" onclick="appendToDisplay('2')" class="number" aria-label="Two">2</button>
+            <button type="button" onclick="appendToDisplay('3')" class="number" aria-label="Three">3</button>
+            <button type="button" onclick="appendToDisplay('+')" class="operator" aria-label="Add">+</button>
 
-    /* Sidebar Styles */
-    .sidebar {
-      background-color: rgba(28, 28, 28, 0.8);
-      border: 0.01px solid rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(25px);
-      -webkit-backdrop-filter: blur(25px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-      width: 225px;
-      color: white;
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 100vh;
-      padding-top: 20px;
-      display: flex;
-      flex-direction: column;
-      z-index: 999;
-    }
+            <button type="button" onclick="appendToDisplay('0')" class="number zero" aria-label="Zero">0</button>
+            <button type="button" onclick="appendToDisplay('.')" class="number" aria-label="Decimal point">.</button>
+            <button type="button" onclick="calculate()" class="operator" aria-label="Equals">=</button>
 
-    /* Sidebar Logo and Title */
-    .sidebar .logo-title {
-      display: flex;
-      align-items: center;
-      margin-bottom: 30px;
-      padding-left: 35px; /* Reduced padding for closer alignment */
-    }
+            <button type="button" onclick="appendToDisplay('sin(')" class="scientific" aria-label="Sine">sin</button>
+            <button type="button" onclick="appendToDisplay('cos(')" class="scientific" aria-label="Cosine">cos</button>
+            <button type="button" onclick="appendToDisplay('tan(')" class="scientific" aria-label="Tangent">tan</button>
+            <button type="button" onclick="appendToDisplay('log(')" class="scientific" aria-label="Logarithm">log</button>
 
-    .sidebar .logo-title img {
-      width: 32px;
-      height: 30px;
-      margin: 5px; /* Maintain spacing around the logo */
-      border-radius: 8px; /* Optional for rounded corners */
-    }
-
-    .sidebar h1 {
-      color: white;
-      font-size: 24px;
-      text-align: left; /* Keep the text aligned to the left */
-      margin: 0; /* Remove extra margins */
-    }
-
-    /* Sidebar Link Styles */
-    .sidebar a {
-      color: white;
-      text-decoration: none;
-      padding: 15px;
-      padding-left: 45px; /* Add extra 10px to move links to the right */
-      font-size: 18px;
-      display: inline-block;
-      position: relative;
-      font-weight: 500;
-      margin-bottom: 10px;
-      transition: color 0.3s ease;
-    }
-
-    .sidebar a::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 200px;
-      height: 100%;
-      background-color: rgba(37, 37, 37, 0.3);
-      opacity: 0;
-      transition: opacity 0.3s ease, background-size 0.3s ease-in-out;
-      z-index: -1;
-      border: 0.01px solid rgba(255, 255, 255, 0.07);
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3), 0 1px 3px rgba(0, 0, 0, 0.1);
-      border-radius: 30px;
-      background-size: 140%;
-    }
-
-    .sidebar a:hover::before {
-      opacity: 1;
-      background-size: 160%;
-    }
-
-    @media (max-width: 768px) {
-      .sidebar {
-        width: 200px;
-      }
-
-      .topbar input[type="text"] {
-        width: 200px;
-      }
-
-      .main-content {
-        margin-left: 0;
-      }
-
-      .topbar {
-        width: calc(100% - 200px);
-        left: 200px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .topbar input[type="text"] {
-        width: 150px;
-      }
-    }
-  </style>
-
-
-
-  <!-- Topbar -->
-  <div class="topbar">
-    <input type="text" placeholder="Search xUtilities...">
-  </div>
-
-  <!-- Sidebar -->
-  <div class="sidebar">
-    <div class="logo-title">
-      <img src="/assets/favicon.ico" alt="Logo"> <!-- Logo -->
-      <h1>xUtilities</h1>
-    </div>
-    <a href="/">Home</a>
-    <a href="/play">Play</a>
-    <a href="/cheat">Cheat</a>
-    <a href="/help">Help</a>
-    <a href="/about">About</a>
-  </div>
-
-
-
-</div>
-    <div class="calculator">
-        <input type="text" id="display" disabled="">
-        <div class="buttons">
-            <button onclick="clearDisplay()" class="clear">C</button>
-            <button onclick="deleteLast()" class="delete">DEL</button>
-            <button onclick="appendToDisplay('%')" class="percent">%</button>
-            <button onclick="appendToDisplay('/')" class="operator">÷</button>
-
-            <button onclick="appendToDisplay('7')" class="number">7</button>
-            <button onclick="appendToDisplay('8')" class="number">8</button>
-            <button onclick="appendToDisplay('9')" class="number">9</button>
-            <button onclick="appendToDisplay('*')" class="operator">×</button>
-
-            <button onclick="appendToDisplay('4')" class="number">4</button>
-            <button onclick="appendToDisplay('5')" class="number">5</button>
-            <button onclick="appendToDisplay('6')" class="number">6</button>
-            <button onclick="appendToDisplay('-')" class="operator">-</button>
-
-            <button onclick="appendToDisplay('1')" class="number">1</button>
-            <button onclick="appendToDisplay('2')" class="number">2</button>
-            <button onclick="appendToDisplay('3')" class="number">3</button>
-            <button onclick="appendToDisplay('+')" class="operator">+</button>
-
-            <button onclick="appendToDisplay('0')" class="number zero">0</button>
-            <button onclick="appendToDisplay('.')" class="number">.</button>
-            <button onclick="calculate()" class="operator">=</button>
-
-            <button onclick="appendToDisplay('sin(')" class="scientific">sin</button>
-            <button onclick="appendToDisplay('cos(')" class="scientific">cos</button>
-            <button onclick="appendToDisplay('tan(')" class="scientific">tan</button>
-            <button onclick="appendToDisplay('log(')" class="scientific">log</button>
-
-            <button onclick="appendToDisplay('sqrt(')" class="scientific">√</button>
-            <button onclick="appendToDisplay('pow(')" class="scientific">x²</button>
-            <button onclick="appendToDisplay('PI')" class="scientific">π</button>
-            <button onclick="appendToDisplay('E')" class="scientific">e</button>
-            <button onclick="appendToDisplay('(')" class="scientific">(</button>
-            <button onclick="appendToDisplay(')')" class="scientific">)</button>
-            <button onclick="" class="scientific zero" style="background-color: #1c1c1c; color: #6e6e6e;">xUtilities</button>
+            <button type="button" onclick="appendToDisplay('sqrt(')" class="scientific" aria-label="Square root">√</button>
+            <button type="button" onclick="appendToDisplay('pow(')" class="scientific" aria-label="Power">x²</button>
+            <button type="button" onclick="appendToDisplay('PI')" class="scientific" aria-label="Pi">π</button>
+            <button type="button" onclick="appendToDisplay('E')" class="scientific" aria-label="Euler's number">e</button>
+            <button type="button" onclick="appendToDisplay('(')" class="scientific" aria-label="Open parenthesis">(</button>
+            <button type="button" onclick="appendToDisplay(')')" class="scientific" aria-label="Close parenthesis">)</button>
+            <button type="button" class="scientific zero" style="background-color: #1c1c1c; color: #6e6e6e;" aria-label="xUtilities">xUtilities</button>
         </div>
-    </div>
-    <div id="footer-placeholder">
-
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>What are you doing here bro?</title>
-    
-    <style>
-        footer {
-          font-family: arial;
-            margin: 0 5vw;
-            margin-top: auto;
-            display: flex;
-            flex-direction: column;
-            line-height: 30px;
-            margin-bottom: 20px;
-        }
-        footer > div {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-            margin-bottom: 15px;
-        }
-
-        footer a,
-        footer span {
-            margin: 0 15px;
-            text-decoration: none;
-            color: #fff;
-            font-size: 15px;
-        }
-
-        footer a {
-            cursor: pointer;
-        }
-    </style>
-
-
-
-    <!-- Footer -->
-    <footer>
-        <div>
-            <a title="Home" href="/">Home</a>
-            <a title="Play" href="/play">Play</a>
-            <a title="Cheat" href="/cheat">Cheat</a>
-            <a title="Help" href="/help">Help</a>
-            <a title="About" href="/about">About</a>
-        </div>
-        <div>
-            <span>xUtilities 2024</span>
-        </div>
-    </footer>
-
-
-</div>
+    </main>
+    <div id="footer-placeholder"></div>
     <script>
         const display = document.getElementById("display");
         let isError = false; // Flag to track if the display is showing an error
@@ -423,20 +226,19 @@
                 expression = expression.replace(/(\d+(\.\d+)?)%/g, '($1/100)');
 
                 // Replace constants with their numerical values
-                expression = expression.replace(/PI/g, 'PI');
-                expression = expression.replace(/E/g, 'E');
+                expression = expression.replace(/PI/g, Math.PI);
+                expression = expression.replace(/E/g, Math.E);
 
                 // Replace functions with their JavaScript equivalents
-                // No longer prefixing with Math., instead using defined functions
-                expression = expression.replace(/sin\(/g, 'sin(');
-                expression = expression.replace(/cos\(/g, 'cos(');
-                expression = expression.replace(/tan\(/g, 'tan(');
-                expression = expression.replace(/log\(/g, 'log(');
-                expression = expression.replace(/sqrt\(/g, 'sqrt(');
-                expression = expression.replace(/pow\(/g, 'pow(');
+                expression = expression.replace(/sin\(/g, 'Math.sin(Math.PI/180*');
+                expression = expression.replace(/cos\(/g, 'Math.cos(Math.PI/180*');
+                expression = expression.replace(/tan\(/g, 'Math.tan(Math.PI/180*');
+                expression = expression.replace(/log\(/g, 'Math.log10(');
+                expression = expression.replace(/sqrt\(/g, 'Math.sqrt(');
+                expression = expression.replace(/pow\(/g, 'Math.pow(');
 
                 // Validate the expression to allow only specific characters and functions
-                const allowedCharacters = /^[0-9+\-*/().%\sPIEabcdefghijklmnopqrstuvwxyz]*$/;
+                const allowedCharacters = /^[0-9+\-*/().%\sMath.PIEMath\.sinMath\.cosMath\.tanMath\.log10Math\.sqrtMath\.pow]*$/;
                 if (!allowedCharacters.test(expression)) {
                     throw new Error("Invalid characters in expression");
                 }
@@ -452,23 +254,36 @@
 
         // Safe evaluation function
         function safeEval(expr) {
-            // Only allow certain Math functions and constants
+            // Only allow certain Math functions
             const allowedFunctions = {
-                sin: function(x) { return Math.sin(x * Math.PI / 180); }, // Degrees to radians
-                cos: function(x) { return Math.cos(x * Math.PI / 180); },
-                tan: function(x) { return Math.tan(x * Math.PI / 180); },
-                log: function(x) { return Math.log10 ? Math.log10(x) : Math.log(x) / Math.LN10; },
-                sqrt: Math.sqrt,
-                pow: Math.pow,
-                PI: Math.PI,
-                E: Math.E
+                'Math.sin': Math.sin,
+                'Math.cos': Math.cos,
+                'Math.tan': Math.tan,
+                'Math.log10': Math.log10 || function(x) { return Math.log(x) / Math.LN10; }, // for older browsers
+                'Math.sqrt': Math.sqrt,
+                'Math.pow': Math.pow,
+                'Math.PI': Math.PI,
+                'Math.E': Math.E
             };
 
             // Create a new function with restricted scope
-            // Pass allowed functions and constants as parameters
-            // Replace constants in the expression with their variable names
+            // We pass the allowed functions as arguments to restrict access
             return Function(...Object.keys(allowedFunctions), '"use strict"; return (' + expr + ')')(...Object.values(allowedFunctions));
         }
+
+        // Enable keyboard input for the calculator
+        document.addEventListener('keydown', function(event) {
+            const key = event.key;
+            if ((key >= '0' && key <= '9') || key === '.' || key === '%' || key === '/' || key === '*' || key === '-' || key === '+' || key === '(' || key === ')') {
+                appendToDisplay(key);
+            } else if (key === 'Enter' || key === '=') {
+                calculate();
+            } else if (key === 'Backspace') {
+                deleteLast();
+            } else if (key.toLowerCase() === 'c') {
+                clearDisplay();
+            }
+        });
     </script>
     <script>
         // Fetch the navbar.html file and insert it into the page
@@ -485,6 +300,6 @@
                 document.getElementById('footer-placeholder').innerHTML = data;
             });
     </script>
+</body>
+</html>
 
-
-</body></html>
