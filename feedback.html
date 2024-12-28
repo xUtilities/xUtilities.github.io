@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Help | xUtilities</title>
+  <title>Feedback | xUtilities</title>
     <link rel="icon" href="../assets/favicon.ico" type="image/x-icon">
   <style>
     body {
@@ -99,8 +99,9 @@
   </style>
 </head>
 <body>
+  <div id="navbar-placeholder"></div>
   <div class="container">
-    <div class="setting-text">Help | xUtilities</div>
+    <div class="setting-text">Feedback | xUtilities</div>
     <form action="https://formspree.io/f/xqaaqwdb" method="POST">
       <input type="text" name="name" placeholder="Your name" required>
       <input type="email" name="email" placeholder="Your email" required>
@@ -113,5 +114,21 @@
   <div class="footer-text">
     i promise i dont record your information i am too lazy to do that
   </div>
+  <div id="footer-placeholder"></div>
+  <script>
+        // Fetch the navbar.html file and insert it into the page
+        fetch('../navbar.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbar-placeholder').innerHTML = data;
+            });
+
+        // Fetch the footer.html file and insert it into the page
+        fetch('../footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            });
+    </script>
 </body>
 </html>
