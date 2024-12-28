@@ -1,0 +1,113 @@
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Help | xUtilities</title>
+  <style>
+    body {
+      font-family: Arial;
+      background-color: #000000;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: #ffffff;
+    }
+    .container {
+      text-align: center;
+      padding: 22.5px;
+      background-color: rgba(28, 28, 28, 0.5); 
+      border-radius: 30px;
+      border: 0.01px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+      width: 400px;
+      height: 300px;
+      position: relative; /* To position elements inside the container */
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-top: 25px; /* Reduced spacing between the top text and the form */
+      padding: 0 10px; /* Added padding inside the form */
+    }
+    input, textarea {
+      font-size: 16px;
+      padding: 10px 20px;
+      background-color: #252525;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      border: 0.01px solid rgba(255, 255, 255, 0.05);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3), 0 1px 3px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      margin: 7px 0; /* Updated spacing between input fields */
+    }
+    input::placeholder, textarea::placeholder {
+      color: rgba(255, 255, 255, 0.7);
+    }
+    textarea {
+      height: 100px;
+      resize: none;
+    }
+    button {
+      font-size: 16px;
+      padding: 10px 20px;
+      background-color: #252525;
+      color: white;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      border: 0.01px solid rgba(255, 255, 255, 0.05);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3), 0 1px 3px rgba(0, 0, 0, 0.1);
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    button:hover {
+      background-color: #005bb5;
+    }
+    .setting-text {
+      font-size: 24px;
+      color: white;
+      position: absolute;
+      top: 15px; /* Adjusted to 15px */
+      left: 50%;
+      transform: translateX(-50%);
+      font-weight: bold;
+    }
+    .footer-text {
+      position: absolute;
+      bottom: 10px;
+      width: 100%;
+      text-align: center;
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.5);
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="setting-text">Help | xUtilities</div>
+    <form action="https://formspree.io/f/xqaaqwdb" method="POST">
+      <input type="text" name="name" placeholder="Your name" required="">
+      <input type="email" name="email" placeholder="Your email" required="">
+      <textarea name="message" placeholder="Your message" required=""></textarea>
+      <button type="submit">Submit</button>
+    </form>
+    <div class="center-content">
+    </div>
+  </div>
+  <div class="footer-text">
+    This uses Formspree so i dont know if they keep track of your email but on my life i dont record your info
+  </div>
+
+
+</body></html>
