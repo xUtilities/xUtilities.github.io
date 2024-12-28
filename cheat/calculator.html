@@ -241,14 +241,14 @@
     </script>
     <script>
         // Fetch the navbar.html file and insert it into the page
-        fetch('navbar.html')
+        fetch('../navbar.html')
             .then(response => response.text())
             .then(data => {
                 document.getElementById('navbar-placeholder').innerHTML = data;
             });
 
         // Fetch the footer.html file and insert it into the page
-        fetch('footer.html')
+        fetch('../footer.html')
             .then(response => response.text())
             .then(data => {
                 document.getElementById('footer-placeholder').innerHTML = data;
