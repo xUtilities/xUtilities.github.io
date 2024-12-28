@@ -1,15 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en"><head>
     <meta charset="UTF-8">
     <title>Calculator | xUtilities</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        /* Apply box-sizing globally */
-        *, *::before, *::after {
-            box-sizing: border-box;
-        }
-
         body {
             font-family: Arial, sans-serif;
             display: flex;
@@ -17,60 +9,49 @@
             align-items: center;
             height: 100vh;
             background-image: url('https://www.colorhexa.com/000000.png');
-            margin: 0;
+            margin: 100;
         }
 
         .calculator {
-            background-color: rgba(28, 28, 28, 0.7); /* Increased opacity for better visibility */
+          margin-top: 160px;
+            background-color: rgba(28, 28, 28, 0.5);
             padding: 15px;
-            border-radius: 45px;
+            border-radius: 50px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 375px;
+            width: 100%;
             border: 0.01px solid rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-            /* Fixed width to ensure consistency */
-            width: 375px;
-            /* Allow height to adjust based on content */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            /* Prevent the calculator from shrinking */
-            flex-shrink: 0;
         }
 
         #display {
-            /* Fixed dimensions */
-            width: 100%;
-            height: 85px; /* Increased from 75px to 85px */
+            height: 85px;
             font-size: 2em;
             text-align: right;
             margin-bottom: 10px;
             padding: 20px;
             border: 0;
-            border-radius: 32.5px; /* Maintained at 35px */
-            background-color: rgba(38, 38, 38, 0.8); /* Changed to RGBA for transparency */
+            border-radius: 35px;
+            background-color: #262626;
             color: white;
             border: 0.01px solid rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-            overflow: hidden; /* Prevent content overflow */
-            white-space: nowrap; /* Prevent text wrapping */
-            text-overflow: ellipsis; /* Show ellipsis for overflowed text */
         }
 
         .buttons {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 10px;
-            width: 100%; /* Match the calculator's width */
         }
 
         .buttons button {
-            /* Consistent sizing with adjusted height */
-            height: 65px; /* Slightly shorter than previous 70px */
+            padding: 20px;
             font-size: 1.5em;
-            border-radius: 35px; /* Changed from 50px to 35px to match display */
+            border-radius: 50px;
             border: 0;
             cursor: pointer;
             transition: background-color 0.3s ease;
@@ -78,131 +59,105 @@
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 0; /* Remove padding to maintain height */
-            overflow: hidden; /* Prevent content overflow */
-            background-color: rgba(54, 54, 54, 0.8); /* Default transparency for buttons */
-            color: white;
         }
 
         .buttons button.operator {
-            background-color: rgba(255, 149, 0, 0.8); /* Operator buttons with transparency */
+            background-color: #ff9500;
             color: white;
         }
 
         .buttons button.operator:hover {
-            background-color: rgba(204, 122, 0, 0.8); /* Hover state with transparency */
+            background-color: #cc7a00;
         }
 
         .buttons button.clear,
         .buttons button.delete,
         .buttons button.percent {
-            background-color: rgba(114, 114, 114, 0.8); /* Clear, Delete, Percent buttons */
+            background-color: #727272;
             color: black;
         }
 
         .buttons button.clear:hover,
         .buttons button.delete:hover,
         .buttons button.percent:hover {
-            background-color: rgba(101, 101, 101, 0.8); /* Hover state */
+            background-color: #656565;
         }
 
         .buttons button.number {
-            background-color: rgba(54, 54, 54, 0.8); /* Number buttons */
+            background-color: #363636;
             color: white;
         }
 
         .buttons button.number:hover {
-            background-color: rgba(38, 38, 38, 0.8); /* Hover state */
+            background-color: #262626;
         }
 
         .buttons button.scientific {
-            background-color: rgba(38, 38, 38, 0.8); /* Scientific buttons */
+            background-color: #262626;
             color: white;
         }
 
         .buttons button.scientific.zero {
-            background-color: rgba(28, 28, 28, 0.8); /* xUtilities button */
-            color: #6e6e6e;
+            background-color: #262626;
+            color: #1c1c1c;
         }
 
         .buttons button.scientific:hover {
-            background-color: rgba(30, 30, 30, 0.8); /* Hover state */
+            background-color: #1e1e1e;
         }
 
         .buttons button.zero {
             grid-column: span 2;
-            height: 65px; /* Maintain consistent height */
-            /* Optional: Adjust width if necessary */
-            /* width: 170px; */
-        }
-
-        /* Ensure the xUtilities button fits properly */
-        .buttons button.scientific.zero {
-            height: 65px; /* Match other buttons */
-            font-size: 1em; /* Adjust font size if necessary */
-            background-color: rgba(28, 28, 28, 0.8); /* Added transparency */
-            color: #6e6e6e; /* Maintain text color */
         }
     </style>
 </head>
 <body>
+  <div id="navbar-placeholder"></div>
+</div>
+    <div class="calculator">
+        <input type="text" id="display" disabled="">
+        <div class="buttons">
+            <button onclick="clearDisplay()" class="clear">C</button>
+            <button onclick="deleteLast()" class="delete">DEL</button>
+            <button onclick="appendToDisplay('%')" class="percent">%</button>
+            <button onclick="appendToDisplay('/')" class="operator">÷</button>
 
-    <div id="navbar-placeholder"></div>
+            <button onclick="appendToDisplay('7')" class="number">7</button>
+            <button onclick="appendToDisplay('8')" class="number">8</button>
+            <button onclick="appendToDisplay('9')" class="number">9</button>
+            <button onclick="appendToDisplay('*')" class="operator">×</button>
 
-    <main role="main" class="calculator" aria-label="Calculator">
-        <input type="text" id="display" disabled aria-label="Calculator display">
-        <div class="buttons" role="group" aria-label="Calculator buttons">
-            <button type="button" onclick="clearDisplay()" class="clear" aria-label="Clear">C</button>
-            <button type="button" onclick="deleteLast()" class="delete" aria-label="Delete last entry">DEL</button>
-            <button type="button" onclick="appendToDisplay('%')" class="percent" aria-label="Percentage">%</button>
-            <button type="button" onclick="appendToDisplay('/')" class="operator" aria-label="Divide">÷</button>
+            <button onclick="appendToDisplay('4')" class="number">4</button>
+            <button onclick="appendToDisplay('5')" class="number">5</button>
+            <button onclick="appendToDisplay('6')" class="number">6</button>
+            <button onclick="appendToDisplay('-')" class="operator">-</button>
 
-            <button type="button" onclick="appendToDisplay('7')" class="number" aria-label="Seven">7</button>
-            <button type="button" onclick="appendToDisplay('8')" class="number" aria-label="Eight">8</button>
-            <button type="button" onclick="appendToDisplay('9')" class="number" aria-label="Nine">9</button>
-            <button type="button" onclick="appendToDisplay('*')" class="operator" aria-label="Multiply">×</button>
+            <button onclick="appendToDisplay('1')" class="number">1</button>
+            <button onclick="appendToDisplay('2')" class="number">2</button>
+            <button onclick="appendToDisplay('3')" class="number">3</button>
+            <button onclick="appendToDisplay('+')" class="operator">+</button>
 
-            <button type="button" onclick="appendToDisplay('4')" class="number" aria-label="Four">4</button>
-            <button type="button" onclick="appendToDisplay('5')" class="number" aria-label="Five">5</button>
-            <button type="button" onclick="appendToDisplay('6')" class="number" aria-label="Six">6</button>
-            <button type="button" onclick="appendToDisplay('-')" class="operator" aria-label="Subtract">-</button>
+            <button onclick="appendToDisplay('0')" class="number zero">0</button>
+            <button onclick="appendToDisplay('.')" class="number">.</button>
+            <button onclick="calculate()" class="operator">=</button>
 
-            <button type="button" onclick="appendToDisplay('1')" class="number" aria-label="One">1</button>
-            <button type="button" onclick="appendToDisplay('2')" class="number" aria-label="Two">2</button>
-            <button type="button" onclick="appendToDisplay('3')" class="number" aria-label="Three">3</button>
-            <button type="button" onclick="appendToDisplay('+')" class="operator" aria-label="Add">+</button>
+            <button onclick="appendToDisplay('sin(')" class="scientific">sin</button>
+            <button onclick="appendToDisplay('cos(')" class="scientific">cos</button>
+            <button onclick="appendToDisplay('tan(')" class="scientific">tan</button>
+            <button onclick="appendToDisplay('log(')" class="scientific">log</button>
 
-            <button type="button" onclick="appendToDisplay('0')" class="number zero" aria-label="Zero">0</button>
-            <button type="button" onclick="appendToDisplay('.')" class="number" aria-label="Decimal point">.</button>
-            <button type="button" onclick="calculate()" class="operator" aria-label="Equals">=</button>
-
-            <button type="button" onclick="appendToDisplay('sin(')" class="scientific" aria-label="Sine">sin</button>
-            <button type="button" onclick="appendToDisplay('cos(')" class="scientific" aria-label="Cosine">cos</button>
-            <button type="button" onclick="appendToDisplay('tan(')" class="scientific" aria-label="Tangent">tan</button>
-            <button type="button" onclick="appendToDisplay('log(')" class="scientific" aria-label="Logarithm">log</button>
-
-            <button type="button" onclick="appendToDisplay('sqrt(')" class="scientific" aria-label="Square root">√</button>
-            <button type="button" onclick="appendToDisplay('pow(')" class="scientific" aria-label="Power">x²</button>
-            <button type="button" onclick="appendToDisplay('PI')" class="scientific" aria-label="Pi">π</button>
-            <button type="button" onclick="appendToDisplay('E')" class="scientific" aria-label="Euler's number">e</button>
-            <button type="button" onclick="appendToDisplay('(')" class="scientific" aria-label="Open parenthesis">(</button>
-            <button type="button" onclick="appendToDisplay(')')" class="scientific" aria-label="Close parenthesis">)</button>
-            <!-- Modified xUtilities Button -->
-            <button
-                type="button"
-                class="scientific zero"
-                style="background-color: rgba(28, 28, 28, 0.8); color: #6e6e6e;" /* Updated inline style for transparency */
-                aria-label="xUtilities"
-                onclick="window.open('https://xutilities.github.io', '_blank')"
-            >
-                xUtilities
-            </button>
+            <button onclick="appendToDisplay('sqrt(')" class="scientific">√</button>
+            <button onclick="appendToDisplay('pow(')" class="scientific">x²</button>
+            <button onclick="appendToDisplay('PI')" class="scientific">π</button>
+            <button onclick="appendToDisplay('E')" class="scientific">e</button>
+            <button onclick="appendToDisplay('(')" class="scientific">(</button>
+            <button onclick="appendToDisplay(')')" class="scientific">)</button>
+            <button onclick="" class="scientific zero" style="background-color: #1c1c1c; color: #6e6e6e;">xUtilities</button>
         </div>
-    </main>
-    <div id="footer-placeholder"></div>
+    </div>
+
+
+</div>
     <script>
         const display = document.getElementById("display");
         let isError = false; // Flag to track if the display is showing an error
@@ -239,19 +194,20 @@
                 expression = expression.replace(/(\d+(\.\d+)?)%/g, '($1/100)');
 
                 // Replace constants with their numerical values
-                expression = expression.replace(/PI/g, Math.PI);
-                expression = expression.replace(/E/g, Math.E);
+                expression = expression.replace(/PI/g, 'PI');
+                expression = expression.replace(/E/g, 'E');
 
                 // Replace functions with their JavaScript equivalents
-                expression = expression.replace(/sin\(/g, 'Math.sin(Math.PI/180*');
-                expression = expression.replace(/cos\(/g, 'Math.cos(Math.PI/180*');
-                expression = expression.replace(/tan\(/g, 'Math.tan(Math.PI/180*');
-                expression = expression.replace(/log\(/g, 'Math.log10(');
-                expression = expression.replace(/sqrt\(/g, 'Math.sqrt(');
-                expression = expression.replace(/pow\(/g, 'Math.pow(');
+                // No longer prefixing with Math., instead using defined functions
+                expression = expression.replace(/sin\(/g, 'sin(');
+                expression = expression.replace(/cos\(/g, 'cos(');
+                expression = expression.replace(/tan\(/g, 'tan(');
+                expression = expression.replace(/log\(/g, 'log(');
+                expression = expression.replace(/sqrt\(/g, 'sqrt(');
+                expression = expression.replace(/pow\(/g, 'pow(');
 
                 // Validate the expression to allow only specific characters and functions
-                const allowedCharacters = /^[0-9+\-*/().%\sMath.PIEMath\.sinMath\.cosMath\.tanMath\.log10Math\.sqrtMath\.pow]*$/;
+                const allowedCharacters = /^[0-9+\-*/().%\sPIEabcdefghijklmnopqrstuvwxyz]*$/;
                 if (!allowedCharacters.test(expression)) {
                     throw new Error("Invalid characters in expression");
                 }
@@ -267,37 +223,25 @@
 
         // Safe evaluation function
         function safeEval(expr) {
-            // Only allow certain Math functions
+            // Only allow certain Math functions and constants
             const allowedFunctions = {
-                'Math.sin': Math.sin,
-                'Math.cos': Math.cos,
-                'Math.tan': Math.tan,
-                'Math.log10': Math.log10 || function(x) { return Math.log(x) / Math.LN10; }, // for older browsers
-                'Math.sqrt': Math.sqrt,
-                'Math.pow': Math.pow,
-                'Math.PI': Math.PI,
-                'Math.E': Math.E
+                sin: function(x) { return Math.sin(x * Math.PI / 180); }, // Degrees to radians
+                cos: function(x) { return Math.cos(x * Math.PI / 180); },
+                tan: function(x) { return Math.tan(x * Math.PI / 180); },
+                log: function(x) { return Math.log10 ? Math.log10(x) : Math.log(x) / Math.LN10; },
+                sqrt: Math.sqrt,
+                pow: Math.pow,
+                PI: Math.PI,
+                E: Math.E
             };
 
             // Create a new function with restricted scope
-            // We pass the allowed functions as arguments to restrict access
+            // Pass allowed functions and constants as parameters
+            // Replace constants in the expression with their variable names
             return Function(...Object.keys(allowedFunctions), '"use strict"; return (' + expr + ')')(...Object.values(allowedFunctions));
         }
-
-        // Enable keyboard input for the calculator
-        document.addEventListener('keydown', function(event) {
-            const key = event.key;
-            if ((key >= '0' && key <= '9') || key === '.' || key === '%' || key === '/' || key === '*' || key === '-' || key === '+' || key === '(' || key === ')') {
-                appendToDisplay(key);
-            } else if (key === 'Enter' || key === '=') {
-                calculate();
-            } else if (key === 'Backspace') {
-                deleteLast();
-            } else if (key.toLowerCase() === 'c') {
-                clearDisplay();
-            }
-        });
     </script>
+    <div id="footer-placeholder"></div>
     <script>
         // Fetch the navbar.html file and insert it into the page
         fetch('../navbar.html')
@@ -313,5 +257,6 @@
                 document.getElementById('footer-placeholder').innerHTML = data;
             });
     </script>
-</body>
-</html>
+
+
+</body></html>
