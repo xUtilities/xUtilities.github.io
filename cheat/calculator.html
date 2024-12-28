@@ -1,4 +1,6 @@
-<html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <title>Calculator | xUtilities</title>
     <style>
@@ -8,12 +10,11 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-image: url('https://www.colorhexa.com/000000.png');
-            margin: 100;
+            background-color: #000000;
+            margin: 0;
         }
 
         .calculator {
-          margin-top: 160px;
             background-color: rgba(28, 28, 28, 0.5);
             padding: 15px;
             border-radius: 50px;
@@ -27,7 +28,7 @@
         }
 
         #display {
-            height: 85px;
+            height: 75px;
             font-size: 2em;
             text-align: right;
             margin-bottom: 10px;
@@ -112,10 +113,9 @@
     </style>
 </head>
 <body>
-  <div id="navbar-placeholder"></div>
-</div>
+    <div id="navbar-placeholder"></div>
     <div class="calculator">
-        <input type="text" id="display" disabled="">
+        <input type="text" id="display" disabled>
         <div class="buttons">
             <button onclick="clearDisplay()" class="clear">C</button>
             <button onclick="deleteLast()" class="delete">DEL</button>
@@ -155,9 +155,7 @@
             <button onclick="" class="scientific zero" style="background-color: #1c1c1c; color: #6e6e6e;">xUtilities</button>
         </div>
     </div>
-
-
-</div>
+    <div id="footer-placeholder"></div>
     <script>
         const display = document.getElementById("display");
         let isError = false; // Flag to track if the display is showing an error
@@ -241,22 +239,20 @@
             return Function(...Object.keys(allowedFunctions), '"use strict"; return (' + expr + ')')(...Object.values(allowedFunctions));
         }
     </script>
-    <div id="footer-placeholder"></div>
     <script>
         // Fetch the navbar.html file and insert it into the page
-        fetch('../navbar.html')
+        fetch('navbar.html')
             .then(response => response.text())
             .then(data => {
                 document.getElementById('navbar-placeholder').innerHTML = data;
             });
 
         // Fetch the footer.html file and insert it into the page
-        fetch('../footer.html')
+        fetch('footer.html')
             .then(response => response.text())
             .then(data => {
                 document.getElementById('footer-placeholder').innerHTML = data;
             });
     </script>
-
-
-</body></html>
+</body>
+</html>
