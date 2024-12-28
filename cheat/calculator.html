@@ -16,12 +16,12 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #000000;
+            background-image: url('https://www.colorhexa.com/000000.png');
             margin: 0;
         }
 
         .calculator {
-            background-color: rgba(28, 28, 28, 0.5);
+            background-color: rgba(28, 28, 28, 0.7); /* Increased opacity for better visibility */
             padding: 15px;
             border-radius: 45px;
             border: 0.01px solid rgba(255, 255, 255, 0.1);
@@ -48,7 +48,7 @@
             padding: 20px;
             border: 0;
             border-radius: 32.5px; /* Maintained at 35px */
-            background-color: #262626;
+            background-color: rgba(38, 38, 38, 0.8); /* Changed to RGBA for transparency */
             color: white;
             border: 0.01px solid rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
@@ -83,51 +83,53 @@
             align-items: center;
             padding: 0; /* Remove padding to maintain height */
             overflow: hidden; /* Prevent content overflow */
+            background-color: rgba(54, 54, 54, 0.8); /* Default transparency for buttons */
+            color: white;
         }
 
         .buttons button.operator {
-            background-color: #ff9500;
+            background-color: rgba(255, 149, 0, 0.8); /* Operator buttons with transparency */
             color: white;
         }
 
         .buttons button.operator:hover {
-            background-color: #cc7a00;
+            background-color: rgba(204, 122, 0, 0.8); /* Hover state with transparency */
         }
 
         .buttons button.clear,
         .buttons button.delete,
         .buttons button.percent {
-            background-color: #727272;
+            background-color: rgba(114, 114, 114, 0.8); /* Clear, Delete, Percent buttons */
             color: black;
         }
 
         .buttons button.clear:hover,
         .buttons button.delete:hover,
         .buttons button.percent:hover {
-            background-color: #656565;
+            background-color: rgba(101, 101, 101, 0.8); /* Hover state */
         }
 
         .buttons button.number {
-            background-color: #363636;
+            background-color: rgba(54, 54, 54, 0.8); /* Number buttons */
             color: white;
         }
 
         .buttons button.number:hover {
-            background-color: #262626;
+            background-color: rgba(38, 38, 38, 0.8); /* Hover state */
         }
 
         .buttons button.scientific {
-            background-color: #262626;
+            background-color: rgba(38, 38, 38, 0.8); /* Scientific buttons */
             color: white;
         }
 
         .buttons button.scientific.zero {
-            background-color: #262626;
-            color: #1c1c1c;
+            background-color: rgba(28, 28, 28, 0.8); /* xUtilities button */
+            color: #6e6e6e;
         }
 
         .buttons button.scientific:hover {
-            background-color: #1e1e1e;
+            background-color: rgba(30, 30, 30, 0.8); /* Hover state */
         }
 
         .buttons button.zero {
@@ -141,6 +143,8 @@
         .buttons button.scientific.zero {
             height: 65px; /* Match other buttons */
             font-size: 1em; /* Adjust font size if necessary */
+            background-color: rgba(28, 28, 28, 0.8); /* Added transparency */
+            color: #6e6e6e; /* Maintain text color */
         }
     </style>
 </head>
@@ -186,7 +190,16 @@
             <button type="button" onclick="appendToDisplay('E')" class="scientific" aria-label="Euler's number">e</button>
             <button type="button" onclick="appendToDisplay('(')" class="scientific" aria-label="Open parenthesis">(</button>
             <button type="button" onclick="appendToDisplay(')')" class="scientific" aria-label="Close parenthesis">)</button>
-            <button type="button" class="scientific zero" style="background-color: #1c1c1c; color: #6e6e6e;" aria-label="xUtilities">xUtilities</button>
+            <!-- Modified xUtilities Button -->
+            <button
+                type="button"
+                class="scientific zero"
+                style="background-color: rgba(28, 28, 28, 0.8); color: #6e6e6e;" /* Updated inline style for transparency */
+                aria-label="xUtilities"
+                onclick="window.open('https://xutilities.github.io', '_blank')"
+            >
+                xUtilities
+            </button>
         </div>
     </main>
     <div id="footer-placeholder"></div>
@@ -302,4 +315,3 @@
     </script>
 </body>
 </html>
-
