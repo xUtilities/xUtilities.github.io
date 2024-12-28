@@ -1,7 +1,11 @@
-<html lang="en"><head>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Help | xUtilities</title>
+    <link rel="icon" href="../assets/favicon.ico" type="image/x-icon">
   <style>
     body {
       font-family: Arial;
@@ -47,6 +51,7 @@
       box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3), 0 1px 3px rgba(0, 0, 0, 0.1);
       width: 100%;
       margin: 7px 0; /* Updated spacing between input fields */
+      outline: none; /* Removed the default focus outline */
     }
     input::placeholder, textarea::placeholder {
       color: rgba(255, 255, 255, 0.7);
@@ -96,18 +101,17 @@
 <body>
   <div class="container">
     <div class="setting-text">Help | xUtilities</div>
-    <form action="https://formspree.io/f/xqaaqwdb" method="POST">
-      <input type="text" name="name" placeholder="Your name" required="">
-      <input type="email" name="email" placeholder="Your email" required="">
-      <textarea name="message" placeholder="Your message" required=""></textarea>
+    <form action="https://formspree.io/f/your-form-id" method="POST">
+      <input type="text" name="name" placeholder="Your name" required>
+      <input type="email" name="email" placeholder="Your email" required>
+      <textarea name="message" placeholder="Your message" required></textarea>
       <button type="submit">Submit</button>
     </form>
     <div class="center-content">
     </div>
   </div>
   <div class="footer-text">
-    This uses Formspree so i dont know if they keep track of your email but on my life i dont record your info
+    i promise i dont record your information i am too lazy to do that
   </div>
-
-
-</body></html>
+</body>
+</html>
