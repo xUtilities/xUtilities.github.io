@@ -6,7 +6,7 @@
   <title>Feedback | xUtilities</title>
   <link rel="icon" href="../assets/favicon.ico" type="image/x-icon">
   <style>
-    * {
+    .container * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
@@ -26,8 +26,6 @@
       color: #ffffff;
     }
     .container {
-      margin-top: 100px;
-      margin-bottom: 50px;
       text-align: center;
       padding: 10px; /* Set padding to 0px */
       background-color: rgba(28, 28, 28, 0.5);
@@ -39,14 +37,14 @@
       width: 400px;
       max-width: 90%;
     }
-    form {
+    .container form {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       gap: 10px; /* Use gap instead of margins */
     }
-    input, textarea {
+    .container input, .container textarea {
       font-size: 16px;
       padding: 12px 20px; /* Adjusted padding */
       background-color: #252525;
@@ -58,14 +56,14 @@
       width: 100%;
       outline: none;
     }
-    input::placeholder, textarea::placeholder {
+    .container input::placeholder, .container textarea::placeholder {
       color: rgba(255, 255, 255, 0.7);
     }
-    textarea {
+    .container textarea {
       height: 120px; /* Increased height */
       resize: none;
     }
-    button {
+    .container button {
       font-size: 16px;
       padding: 10px 20px;
       background-color: #252525;
@@ -76,10 +74,10 @@
       border: 0.01px solid rgba(255, 255, 255, 0.05);
       box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3), 0 1px 3px rgba(0, 0, 0, 0.1);
     }
-    button:hover {
-      background-color: #b700ff;
+    .container button:hover {
+      background-color: #005bb5;
     }
-    .setting-text {
+    .container .setting-text {
       font-size: 24px;
       color: white;
       font-weight: bold;
