@@ -4,33 +4,45 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Error | xUtilities</title>
+  <link rel="icon" href="../assets/favicon.ico" type="image/x-icon">
   <style>
-    body {
-      font-family: Arial;
-      background-color: #000000;
+    .container * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
+    }
+    html, body {
+      font-family: Arial, sans-serif;
+      background-color: #000000;
+      height: 100%;
+      width: 100%;
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      padding: 20px;
+      flex-direction: column;
+    }
+    body {
       color: #ffffff;
     }
     .container {
       text-align: center;
-      padding: 40px;
-      background-color: rgba(28, 28, 28, 0.5); 
+      padding: 10px;
+      background-color: rgba(28, 28, 28, 0.5);
       border-radius: 30px;
-      border: 0.01px solid rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.1);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-      width: 400px;
-      height: 300px;
-      position: relative; /* To position elements inside the container */
+      width: 600px;
+      height: 400px;
+      max-width: 90%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
-    button {
+    .container button {
       font-size: 16px;
       padding: 10px 20px;
       background-color: #252525;
@@ -40,64 +52,69 @@
       cursor: pointer;
       border: 0.01px solid rgba(255, 255, 255, 0.05);
       box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3), 0 1px 3px rgba(0, 0, 0, 0.1);
-      position: absolute; /* Position button inside the container */
-      bottom: 10px; /* Align to the bottom of the container */
-      left: 50%; /* Center horizontally */
-      transform: translateX(-50%); /* Center adjust */
     }
-    button:hover {
+    .container button:hover {
       background-color: #005bb5;
     }
     .setting-text {
       font-size: 24px;
       color: white;
-      position: absolute;
-      top: 15px; /* Adjusted to 15px */
-      left: 50%;
-      transform: translateX(-50%);
       font-weight: bold;
+      margin-top: 5px;
     }
-    .center-content {
-      position: absolute;
-      top: calc(50% - 20px); /* Move 20px higher */
-      left: 50%;
-      transform: translate(-50%, -50%);
+    .error-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex-grow: 1;
+      margin-bottom: 20px; /* Raised text and subtext by 20px */
     }
-    .center-content h1 {
+    .error-text {
       font-size: 28px;
-      margin: 0;
+      color: white;
+      font-weight: bold;
+      margin: 10px 0;
     }
-    .center-content .sub-text {
+    .sub-text {
       font-size: 18px;
-      color: #cccccc;
-      margin-top: 10px;
-    }
-    .footer-text {
-      position: absolute;
-      bottom: 10px;
-      width: 100%;
-      text-align: center;
-      font-size: 12px;
-      color: rgba(255, 255, 255, 0.5);
-      text-transform: uppercase;
+      color: #b0b0b0;
     }
   </style>
 </head>
 <body>
+  <div id="navbar-placeholder"></div>
   <div class="container">
     <div class="setting-text">Error | xUtilities</div>
-    <button onclick="window.location.href='https://xutilities.github.io';">Go Home</button>
-    <div class="center-content">
-      <h1>Error 404 | Not Found</h1>
-      <div class="sub-text" id="random-phrase">Where Are You Bro?</div>
+    <div class="error-group">
+      <div class="error-text">Error 404 | Not Found</div>
+      <div class="sub-text" id="sub-text"></div>
     </div>
+    <button type="button">Go home</button>
   </div>
-  <div class="footer-text">
-    These messages are jokes. don't take them seriously
-  </div>
+  
+  <!-- Footer placeholder -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Loading the Header, Navbar, and Footer -->
+    <script>
+        // Fetch the navbar.html file and insert it into the page
+        fetch('../navbar.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbar-placeholder').innerHTML = data;
+            });
+
+        // Fetch the footer.html file and insert it into the page
+        fetch('../footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            });
+    </script>
+
   <script>
-    // Array of new phrases
-    const phrases = [
+    const messages = [
       "Move on bro",
       "I can explain",
       "But we found Waldo",
@@ -106,40 +123,32 @@
       "Tragic",
       "Imagine…",
       "Nice try",
-      "Skill issue",
-      "Nice! You found NOTHING",
+      "skill issue",
+      "Nice! you found NOTHING",
       "Bruh",
-      "It's not you, it's us? Nah… it's you",
-      "Damn",
+      "its not you, its us? nah… its you",
+      "damn",
       "Not my problem",
-      "I know that feeling",
+      "i know that feeling",
       "I swear it was here",
-      "Do better",
+      "do better",
       "Try turning it off and on",
-      "You're lost bro",
-      "Go on about your day",
-      "Touch grass while you wait",
-      "You make me feel smart",
-      "How did you mess this up?",
-      "Embarrassing",
+      "your lost bro",
+      "go on about your day",
+      "touch grass while you wait",
+      "you make me feel smart",
+      "how did you mess this up?",
+      "embarassing",
       "Huh?",
-      "She's busy lil bro",
-      "Not here man",
-      "Page left cuz of you",
-      "Even Google is laughing at you",
-      "Page couldn't deal w you",
-      "Even the 502 page is judging you"
+      "shes busy lil bro",
+      "not here man",
+      "even Google is laughing at you",
+      "even the 502 page is judging you"
     ];
-
-    // Function to change the phrase randomly
-    function setRandomPhrase() {
-      const randomIndex = Math.floor(Math.random() * phrases.length);
-      const phraseElement = document.getElementById("random-phrase");
-      phraseElement.textContent = phrases[randomIndex];
-    }
-
-    // Call the function on page load to set a random phrase
-    window.onload = setRandomPhrase;
+    
+    const subTextElement = document.getElementById('sub-text');
+    const randomIndex = Math.floor(Math.random() * messages.length);
+    subTextElement.textContent = messages[randomIndex];
   </script>
 </body>
 </html>
