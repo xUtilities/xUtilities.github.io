@@ -30,33 +30,38 @@
         .title-container {
             display: flex;
             align-items: center;
-            justify-content: center;
-            margin: 200px 0;
+            justify-content: flex-start;
+            margin: 200px 5%;
+            flex-wrap: nowrap;
         }
 
         /* Title styling */
         .title {
-            font-size: 150px;
+            font-size: 10vw;
+            max-font-size: 150px;
             font-family: Arial, sans-serif;
             font-weight: bold;
             color: #ffffff;
             margin-left: 20px;
-            text-align: center;
+            text-align: left;
         }
 
         /* Square image next to the title */
         .title-image {
-            width: 150px;
-            height: 150px;
+            width: 10vw;
+            height: 10vw;
+            max-width: 150px;
+            max-height: 150px;
             border-radius: 20px;
             background-size: cover;
             background-position: center;
-            background-image: url('https://imgur.com/u4IsjPq.png'); /* Replace this URL with your desired image */
+            background-image: url('https://imgur.com/u4IsjPq.png');
         }
 
         /* Outer rounded square with glassmorphic effect */
         .outer-square {
-            width: 900px;
+            width: 90%;
+            max-width: 900px;
             background-color: rgba(28, 28, 28, 0.5); 
             border-radius: 45px;
             display: flex;
@@ -73,7 +78,7 @@
         /* Grid container inside the outer square */
         .grid-container {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px;
             width: 100%;
             text-align: center;
@@ -84,7 +89,7 @@
             border-radius: 30px;
             height: 300px;
             width: 100%;
-            background-size: 100%;
+            background-size: cover;
             background-position: center;
             border: 0.01px solid rgba(255, 255, 255, 0.05);
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3), 0 1px 3px rgba(0, 0, 0, 0.1);
@@ -104,46 +109,6 @@
             color: #ffffff;
             margin-top: 10px;
             text-decoration: none;
-        }
-
-        /* Image container styling */
-        .image-container {
-            width: 900px;
-            height: 600px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 50px;
-        }
-
-        .image-container img {
-            width: 100%;
-            max-height: 600px;
-            object-fit: cover;
-            border-radius: 30px;
-        }
-
-        .image-title {
-            font-size: 28px;
-            margin-top: 10px;
-            color: #ffffff;
-            text-align: center;
-        }
-
-        .overlay-text {
-            position: fixed; /* Stays fixed on the screen */
-            bottom: 20px; /* Distance from the bottom */
-            left: 50%; /* Align horizontally to the center */
-            transform: translateX(-50%); /* Perfectly center the element */
-            background-color: rgba(0, 0, 0, 0.7); /* Optional: Semi-transparent black background */
-            color: #ffffff; /* White text */
-            padding: 10px 20px; /* Padding for the text box */
-            font-size: 18px; /* Adjust font size */
-            border-radius: 8px; /* Optional: Rounded corners */
-            z-index: 9999; /* Ensure it overlays everything */
-            text-align: center; /* Center text horizontally */
-            pointer-events: none; /* Makes sure it doesn’t block clicks behind it */
         }
 
     </style>
@@ -207,7 +172,7 @@
     <!-- Empty Space with Image and Text -->
     <div class="image-container">
         <img src="https://i.imgur.com/mOtmvuI.png">
-        <div class="image-title">We're not like the opps 🙏😭 we don't just offer games</div>
+        <div class="image-title">We're not like the opps. we don't just offer games</div>
     </div>
 
     <!-- New Outer Square -->
