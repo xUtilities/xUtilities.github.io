@@ -69,6 +69,7 @@
       z-index: 999;
     }
 
+    /* Sidebar Logo and Title */
     .sidebar .logo-title {
       display: flex;
       align-items: center;
@@ -89,6 +90,7 @@
       margin: 0;
     }
 
+    /* Sidebar Link Styles */
     .sidebar a {
       color: white;
       text-decoration: none;
@@ -125,7 +127,6 @@
       margin-bottom: 20px;
     }
 
-    /* Tablet Mode */
     @media (max-width: 1440px) {
       .sidebar {
         width: 75px;
@@ -154,35 +155,9 @@
       }
     }
 
-    /* Mobile Mode - Bottom Bar */
-    @media (max-width: 768px) {
-      .sidebar {
-        display: none;
-      }
-      .topbar {
-        width: 100%;
-        left: 0;
-      }
-      .bottombar {
-        display: flex;
-        justify-content: space-around;
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-        background-color: rgba(28, 28, 28, 0.8);
-        padding: 10px 0;
-      }
-      .bottombar a {
-        color: white;
-        text-decoration: none;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        font-size: 12px;
-      }
-      .bottombar a img {
-        width: 20px;
-        height: 20px;
+    @media (max-width: 480px) {
+      .topbar input[type="text"] {
+        width: 300px;
       }
     }
   </style>
@@ -197,7 +172,7 @@
   <!-- Sidebar -->
   <div class="sidebar">
     <div class="logo-title">
-      <img src="/assets/favicon.ico" alt="Logo">
+      <img src="/assets/favicon.ico" alt="Logo"> <!-- Logo -->
       <h1>xUtilities</h1>
     </div>
     <a href="/"><img src="/assets/home.png" alt="Home"><span>Home</span></a>
@@ -205,15 +180,6 @@
     <a href="/cheat"><img src="/assets/cheat.png" alt="Cheat"><span>Cheat</span></a>
     <a href="/feedback"><img src="/assets/feedback.png" alt="Feedback"><span>Feedback</span></a>
     <a href="/about" class="bottom"><img src="/assets/about.png" alt="About"><span>About</span></a>
-  </div>
-
-  <!-- Bottom Bar -->
-  <div class="bottombar">
-    <a href="/"><img src="/assets/home.png" alt="Home">Home</a>
-    <a href="/play"><img src="/assets/play.png" alt="Play">Play</a>
-    <a href="/cheat"><img src="/assets/cheat.png" alt="Cheat">Cheat</a>
-    <a href="/feedback"><img src="/assets/feedback.png" alt="Feedback">Feedback</a>
-    <a href="/about"><img src="/assets/about.png" alt="About">About</a>
   </div>
 
 </body>
