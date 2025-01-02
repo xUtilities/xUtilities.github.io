@@ -21,13 +21,13 @@
 
     /* Topbar Styles */
     .topbar {
-      background-color: rgba(28, 28, 28, 0.8);
+      background-color: rgba(28, 28, 28, 0.5);
       border: 0.01px solid rgba(255, 255, 255, 0.1);
       backdrop-filter: blur(25px);
       -webkit-backdrop-filter: blur(25px);
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
       width: calc(100% - 185px);
-      padding: 20px 20px;
+      padding: 15px 20px;
       color: white;
       display: flex;
       justify-content: flex-start;
@@ -45,14 +45,14 @@
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
       padding: 10px;
       width: 300px;
-      height: 40px; /* Ensures the height of the input */
+      height: 40px;
       border: none;
       border-radius: 30px;
     }
 
     /* Sidebar Styles */
     .sidebar {
-      background-color: rgba(28, 28, 28, 0.8);
+      background-color: rgba(28, 28, 28, 0.5);
       border: 0.01px solid rgba(255, 255, 255, 0.1);
       backdrop-filter: blur(25px);
       -webkit-backdrop-filter: blur(25px);
@@ -73,83 +73,92 @@
     .sidebar .logo-title {
       display: flex;
       align-items: center;
-      margin-bottom: 30px;
-      padding-left: 15px; /* Reduced padding for closer alignment */
+      margin-bottom: 20px;
+      padding-left: 15px;
     }
-    
+
     .sidebar .logo-title img {
       width: 32px;
       height: 30px;
-      margin: 5px; /* Maintain spacing around the logo */
-      border-radius: 8px; /* Optional for rounded corners */
+      margin: 5px;
     }
 
     .sidebar h1 {
       color: white;
       font-size: 24px;
-      text-align: left; /* Keep the text aligned to the left */
-      margin: 0; /* Remove extra margins */
+      text-align: left;
+      margin: 0;
     }
 
     /* Sidebar Link Styles */
     .sidebar a {
       color: white;
       text-decoration: none;
-      padding: 15px;
-      padding-left: 45px; /* Add extra 10px to move links to the right */
+      padding: 15px 25px;
       font-size: 18px;
-      display: inline-block;
-      position: relative;
-      font-weight: 500;
-      margin-bottom: 10px;
-      transition: color 0.3s ease;
+      border: 0.01px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+      border-radius: 50px;
+      background-color: rgba(37, 37, 37, 0.1);
+      transition: background-color 0.1s ease, color 0.1s ease;
+      margin: 5px 15px;
+      display: flex;
+      align-items: center;
+      height: 50px;
     }
 
-    .sidebar a::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 160px;
-      height: 100%;
-      background-color: rgba(37, 37, 37, 0.3);
-      opacity: 0;
-      transition: opacity 0.3s ease, background-size 0.3s ease-in-out;
-      z-index: -1;
-      border: 0.01px solid rgba(255, 255, 255, 0.07);
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3), 0 1px 3px rgba(0, 0, 0, 0.1);
-      border-radius: 30px;
-      background-size: 140%;
+    .sidebar a img {
+      width: 20px;
+      height: 20px;
+      margin-left: 0px;
+      margin-right: 10px;
+      object-fit: contain;
     }
 
-    .sidebar a:hover::before {
-      opacity: 1;
-      background-size: 160%;
+    .sidebar a:hover {
+      background-color: rgba(60, 60, 60, 0.8);
+      color: #ffffff;
+    }
+
+    .sidebar .bottom {
+      margin-top: auto;
+      margin-bottom: 20px;
     }
 
     @media (max-width: 768px) {
       .sidebar {
-        width: 200px;
+        width: 75px;
+        align-items: center;
       }
-
-      .topbar input[type="text"] {
-        width: 200px;
+      .sidebar .logo-title {
+        justify-content: center;
+        padding-left: 0;
       }
-
-      .main-content {
-        margin-left: 0;
+      .sidebar a {
+        justify-content: center;
+        padding: 15px;
+        height: 50px;
+        width: 50px;
       }
-
+      .sidebar a img {
+        margin-left: 4px;
+        margin-right: 0px;
+        object-fit: contain;
+      }
+      .sidebar a span, .sidebar h1 {
+        display: none;
+      }
       .topbar {
-        width: calc(100% - 200px);
-        left: 200px;
+        width: calc(100% - 75px);
+        left: 75px;
       }
     }
 
     @media (max-width: 480px) {
       .topbar input[type="text"] {
-        width: 150px;
+        width: 300px;
       }
     }
   </style>
@@ -167,11 +176,11 @@
       <img src="/assets/favicon.ico" alt="Logo"> <!-- Logo -->
       <h1>xUtilities</h1>
     </div>
-    <a href="/">Home</a>
-    <a href="/play">Play</a>
-    <a href="/cheat">Cheat</a>
-    <a href="/feedback">Feedback</a>
-    <a href="/about">About</a>
+    <a href="/"><img src="/assets/home.png" alt="Home"><span>Home</span></a>
+    <a href="/play"><img src="https://imgur.com/UqzaqfV.png" alt="Play"><span>Play</span></a>
+    <a href="/cheat"><img src="/assets/cheat.png" alt="Cheat"><span>Cheat</span></a>
+    <a href="/feedback"><img src="/assets/feedback.png" alt="Feedback"><span>Feedback</span></a>
+    <a href="/about" class="bottom"><img src="/assets/about.png" alt="About"><span>About</span></a>
   </div>
 
 </body>
