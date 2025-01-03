@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Play | xUtilities</title>
-    <link rel="icon" href="../assets/favicon.ico" type="image/x-icon">
+
+    <!-- Favicon link -->
+    <link rel="icon" href="/assets/favicon.ico" type="image/x-icon">
+
     <style>
         /* Full page background with parallax effect */
         body {
@@ -21,14 +24,29 @@
             background-attachment: fixed;
             background-repeat: no-repeat;
             color: white;
+            overflow-x: hidden;
         }
 
         /* Title container */
         .title-container {
             display: flex;
             align-items: center;
-            justify-content: center;
-            margin: 200px 0;
+            justify-content: flex-start;
+            flex-wrap: nowrap;
+            margin: 200px 5%;
+        }
+
+        @media (max-width: 768px) {
+            .title-container {
+                margin: 20px 5%;
+                margin-top: 100px;
+            }
+            #footer-placeholder {
+                display: none;
+            }
+            body {
+                margin-bottom: 20px;
+            }
         }
 
         /* Title styling */
@@ -38,12 +56,13 @@
             font-weight: bold;
             color: #ffffff;
             margin-left: 20px;
-            text-align: center;
+            text-align: left;
         }
 
         /* Outer rounded square with glassmorphic effect */
         .outer-square {
-            width: 900px;
+            width: 90%;
+            max-width: 900px;
             background-color: rgba(28, 28, 28, 0.5); 
             border-radius: 45px;
             display: flex;
@@ -57,7 +76,6 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
         }
         
-        /* Subtitle styling */
         .subtitle {
             font-size: 72px;
             font-family: Arial, sans-serif;
@@ -70,7 +88,7 @@
         /* Grid container inside the outer square */
         .grid-container {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(300px, 2fr));
             gap: 20px;
             width: 100%;
             text-align: center;
@@ -81,7 +99,7 @@
             border-radius: 30px;
             height: 300px;
             width: 100%;
-            background-size: 100%;
+            background-size: cover;
             background-position: center;
             border: 0.01px solid rgba(255, 255, 255, 0.05);
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3), 0 1px 3px rgba(0, 0, 0, 0.1);
@@ -101,21 +119,6 @@
             color: #ffffff;
             margin-top: 10px;
             text-decoration: none;
-        }
-
-        .overlay-text {
-            position: fixed; /* Stays fixed on the screen */
-            bottom: 20px; /* Distance from the bottom */
-            left: 50%; /* Align horizontally to the center */
-            transform: translateX(-50%); /* Perfectly center the element */
-            background-color: rgba(0, 0, 0, 0.7); /* Optional: Semi-transparent black background */
-            color: #ffffff; /* White text */
-            padding: 10px 20px; /* Padding for the text box */
-            font-size: 18px; /* Adjust font size */
-            border-radius: 8px; /* Optional: Rounded corners */
-            z-index: 9999; /* Ensure it overlays everything */
-            text-align: center; /* Center text horizontally */
-            pointer-events: none; /* Makes sure it doesn’t block clicks behind it */
         }
 
     </style>
