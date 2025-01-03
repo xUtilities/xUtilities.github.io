@@ -24,6 +24,7 @@
             background-attachment: fixed;
             background-repeat: no-repeat;
             color: white;
+            overflow-x: hidden;
         }
 
         /* Title container */
@@ -35,9 +36,15 @@
             margin: 200px 5%;
         }
 
-        @media (max-width: 700px) {
+        @media (max-width: 768px) {
             .title-container {
-                margin: 100px 5%;
+                margin: 20px 5%;
+                margin-top: 100px;
+            }
+            #footer-placeholder {
+                display: none;
+            }
+            body {
                 margin-bottom: 20px;
             }
         }
@@ -175,13 +182,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Empty Space with Image and Text -->
-    <div class="image-container">
-        <img src="https://i.imgur.com/mOtmvuI.png">
-        <div class="image-title">We're not like the opps. we don't just offer games</div>
-    </div>
-
     <!-- New Outer Square -->
     <div class="outer-square">
         <div class="grid-container">
