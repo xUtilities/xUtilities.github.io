@@ -1,29 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Notice | xUtilities</title>
-  <link rel="icon" href="../assets/favicon.ico" type="image/x-icon">
-  <script src="../assets/fetch.js"></script>
+    <title>xUtilities</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon">
   <style>
     .container * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-    }
-    html, body {
-      font-family: Arial, sans-serif;
-      background-image: url('https://www.colorhexa.com/000000.png');
-      height: 100%;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-      flex-direction: column;
-      overflow-y: hidden;
-      overflow-x: hidden;
     }
     body {
       color: #ffffff;
@@ -31,12 +17,12 @@
     .container {
       text-align: center;
       padding: 10px;
-      background-color: rgba(28, 28, 28, 0.5);
-      border-radius: 30px;
-      border: 0.01px solid rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+      background-color: var(--main);
+      border-radius: 32px;
+      border: 0.01px solid var(--border);
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      box-shadow: 0 4px 12px var(--shadow);
       width: 600px;
       height: 400px;
       max-width: 90%;
@@ -44,27 +30,35 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      margin-bottom: 20px;
     }
     .container button {
-      font-size: 16px;
-      padding: 10px 20px;
-      background-color: #252525;
-      color: white;
-      border: none;
-      border-radius: 50px;
-      cursor: pointer;
-      border: 0.01px solid rgba(255, 255, 255, 0.05);
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3), 0 1px 3px rgba(0, 0, 0, 0.1);
-    }
+  text-decoration: none;
+  /* Removes underline */
+  font-size: 16px;
+  padding: 10px 20px;
+  background-color: var(--sub);
+  color: var(--text-color);
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  border: 0.01px solid var(--border);
+  box-shadow: 0 6px 15px var(--shadow), 0 1px 3px var(--shadow);
+  transition: all 0.2s ease;
+}
     .container button:hover {
-      background-color: #005bb5;
-    }
+  background: #0875f6;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.container button:active {
+  transform: translateY(0);
+}
+
     .setting-text {
       font-size: 24px;
       color: white;
       font-weight: bold;
-      margin-top: 5px;
     }
     .error-group {
       display: flex;
@@ -72,13 +66,11 @@
       align-items: center;
       justify-content: center;
       flex-grow: 1;
-      margin-bottom: 20px; /* Raised text and subtext by 20px */
     }
     .error-text {
       font-size: 28px;
       color: white;
       font-weight: bold;
-      margin: 10px 0;
     }
     .sub-text {
       font-size: 18px;
@@ -101,7 +93,7 @@
   <div id="footer-placeholder"></div>
   <script>
     const messages = [
-      "Thanks for visiting xutilities.github.io! Although we didnt shut down or anything like that, we did move to a new website. You can visit xUtilities at xUtilities.pages.dev . See you there!"
+      "We moved to a new website. You can visit xUtilities at xUtilities.pages.dev . See you there!"
     ];
     
     const subTextElement = document.getElementById('sub-text');
