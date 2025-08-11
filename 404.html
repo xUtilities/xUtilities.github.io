@@ -1,12 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirect</title>
-    <meta http-equiv="refresh" content="0; url=https://xutilities.pages.dev/" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="xUtilities. Fast, Free, Unblocked.">
+    <link rel="icon" href="/assets/images/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="/assets/images/icons/icon-ios.png">
+  <link rel="manifest" href="/assets/JSON/data.json">
+  <script src="/assets/JS/fetch.js" defer></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    :root {
+      --background: url(https://www.colorhexa.com/000000.png);
+      --background-color: black;
+      --main: rgba(255, 255, 255, 0.15);
+      --sub: rgba(266, 266, 266, 0.1);
+      --border: rgb(255, 255, 255, 0.2);
+      --text-color: white;
+      --border-thickness: 0.01px;
+    }
+    body {
+      font-family: 'Inter', Arial;
+      background-image: var(--background);
+      background-color: var(--background-color);
+      background-attachment: fixed;
+      background-position: center;
+      background-size: cover;
+      overflow-x: hidden;
+      display: flex;
+      gap: 20px;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin: 0px 20px 0px 105px;
+      height: 100vh;
+    }
+    .outer-square {
+      position: relative;
+      text-align: center;
+      padding: 10px;
+      background-color: var(--main);
+      border-radius: 32px;
+      border-top: var(--border-thickness) solid var(--border);
+      border-bottom: var(--border-thickness) solid var(--border);
+      height: 500px;
+      gap: 10px;
+      width: 700px;
+      max-width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      animation: fadeInUp 0.9s cubic-bezier(0.23, 1, 0.32, 1) both;
+    }
+    .outer-square .button {
+      text-decoration: none;
+      display: flex;
+      font-size: 16px;
+      padding: 12px 20px;
+      background-color: var(--sub);
+      color: var(--text-color);
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      border-top: var(--border-thickness) solid var(--border);
+      transition: background 0.2s ease, transform 0.2s ease;
+      height: 45px;
+      align-items: center;
+    }
+    .outer-square .button:hover {
+      background: var(--accent-color);
+      color: #ffffff;
+    }
+    .title {
+      color: var(--text-color);
+      font-weight: bold;
+    }
+    .group { 
+      gap: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex-grow: 1;
+    }
+    .text {
+      color: var(--text-color);
+      font-weight: bold;
+    }
+    .sub-text {
+      font-size: 18px;
+      color: #b0b0b0;
+    }
+    @media (max-width: 1440px) {
+      body {
+        margin: 0px 20px 0px 105px;
+      }
+    }
+    @media (max-width: 1080px) {
+      body {
+        margin: 0px 20px 0px 20px;
+      }
+    }
+    @keyframes fadeInUp {
+      from {
+        background-color: transparent;
+        scale: 1.2;
+      }
+      to {
+        background-color: var(--main);
+        scale: 1;
+      }
+    }
+  </style>
 </head>
 <body>
-    <p></p>
+  <div id="navbar-placeholder"></div>
+  <div class="outer-square">
+    <div class="liquidGlass-effect" style=" position: absolute;
+z-index: -5;
+inset: 0;
+border-radius: 32px;
+backdrop-filter: blur(10px);
+filter: url(#glass-distortion);
+overflow: hidden;
+isolation: isolate;
+
+"></div>
+    <h2 class="title">Notice</h2>
+    <div class="group">
+      <div class="group">
+        <h1 class="text">We've Moved</h1>
+        <div class="sub-text" id="sub-text"></div>
+      </div>
+    </div>
+    <a class="button" href="/index.html">Go Home</a>
+  </div>
 </body>
 </html>

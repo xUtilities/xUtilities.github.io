@@ -1,117 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Notice | xUtilities</title>
-  <link rel="icon" href="../assets/favicon.ico" type="image/x-icon">
-  <script src="../assets/fetch.js"></script>
-  <style>
-    .container * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    html, body {
-      font-family: Arial, sans-serif;
-      background-image: url('https://www.colorhexa.com/000000.png');
-      height: 100%;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-      flex-direction: column;
-      overflow-y: hidden;
-      overflow-x: hidden;
-    }
-    body {
-      color: #ffffff;
-    }
-    .container {
-      text-align: center;
-      padding: 10px;
-      background-color: rgba(28, 28, 28, 0.5);
-      border-radius: 30px;
-      border: 0.01px solid rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-      width: 600px;
-      height: 400px;
-      max-width: 90%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 20px;
-    }
-    .container button {
-      font-size: 16px;
-      padding: 10px 20px;
-      background-color: #252525;
-      color: white;
-      border: none;
-      border-radius: 50px;
-      cursor: pointer;
-      border: 0.01px solid rgba(255, 255, 255, 0.05);
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3), 0 1px 3px rgba(0, 0, 0, 0.1);
-    }
-    .container button:hover {
-      background-color: #005bb5;
-    }
-    .setting-text {
-      font-size: 24px;
-      color: white;
-      font-weight: bold;
-      margin-top: 5px;
-    }
-    .error-group {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      flex-grow: 1;
-      margin-bottom: 20px; /* Raised text and subtext by 20px */
-    }
-    .error-text {
-      font-size: 28px;
-      color: white;
-      font-weight: bold;
-      margin: 10px 0;
-    }
-    .sub-text {
-      font-size: 18px;
-      color: #b0b0b0;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirect</title>
 </head>
 <body>
-  <div id="navbar-placeholder"></div>
-  <div class="container">
-    <div class="setting-text">Notice | xUtilities</div>
-    <div class="error-group">
-      <div class="error-text">We've Moved</div>
-      <div class="sub-text" id="sub-text"></div>
-    </div>
-    <button type="button" onclick="goToLink()">Go to xUtilities.pages.dev</button>
-  </div>
-  
-  <!-- Footer placeholder -->
-  <div id="footer-placeholder"></div>
   <script>
-    const messages = [
-      "Thanks for visiting xutilities.github.io! Although we didnt shut down or anything like that, we did move to a new website. You can visit xUtilities at xUtilities.pages.dev . See you there!"
-    ];
-    
-    const subTextElement = document.getElementById('sub-text');
-    const randomIndex = Math.floor(Math.random() * messages.length);
-    subTextElement.textContent = messages[randomIndex];
-
-    // Function to redirect to the desired URL
-    function goToLink() {
-      window.location.href = "https://xutilities.pages.dev"; // Replace with your desired URL
-    }
+    const URL = "https://www.google.com"; // URL to redirect to
+    window.location.href = URL; // Redirect to 404 page
   </script>
+    <p></p>
 </body>
 </html>
